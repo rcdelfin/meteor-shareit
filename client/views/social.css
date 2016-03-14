@@ -8,16 +8,21 @@
 }
 
 .share-buttons .shareit-twitter-colors {
-  background: #4099FF;  
+  background: #4099FF;
   color: #fff;
 }
 
 .share-buttons .shareit-googleplus-colors {
-  background: #D34836;  
+  background: #D34836;
   color: #fff;
 }
 
 .share-buttons .shareit-pinterest-colors {
-  background: #D34836;  
+  background: #D34836;
+  color: #fff;
+}
+
+.share-buttons .shareit-linkedin-colors {
+  background: #4099FF;
   color: #fff;
 }

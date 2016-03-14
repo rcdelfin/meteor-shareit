@@ -1,8 +1,8 @@
 Package.describe({
   summary: 'A meteor package that makes social sharing easy',
-  git: 'https://github.com/dolgarev/meteor-shareit',
+  git: 'https://github.com/rcdelfin/meteor-shareit.git',
   version: '1.1.1',
-  name: "liberation:shareit"
+  name: "rcdelfin:shareit"
 });
 
 Package.onUse(function(api) {
@@ -22,7 +22,9 @@ Package.onUse(function(api) {
     'client/views/googleplus/googleplus.html',
     'client/views/googleplus/googleplus.coffee',
     'client/views/pinterest/pinterest.html',
-    'client/views/pinterest/pinterest.coffee'
+    'client/views/pinterest/pinterest.coffee',
+    'client/views/linkedin/linkedin.html',
+    'client/views/linkedin/linkedin.coffee'
   ], 'client');
 
   api.export('ShareIt', 'client');

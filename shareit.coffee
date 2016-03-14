@@ -13,13 +13,13 @@ ShareIt =
   location:
     host: Meteor.bindEnvironment () ->
       Meteor.absoluteUrl().replace(/^http:\/\/|^https:\/\//, '').replace(/\/$/, '')
-    href: Meteor.bindEnvironment () -> 
+    href: Meteor.bindEnvironment () ->
       Meteor.absoluteUrl().replace(/\/$/, '') + location.pathname
-    origin: Meteor.bindEnvironment () -> 
+    origin: Meteor.bindEnvironment () ->
       Meteor.absoluteUrl().replace(/\/$/, '')
-    pathname: Meteor.bindEnvironment () -> 
+    pathname: Meteor.bindEnvironment () ->
       location.pathname # "/showcontent/awjdaf2384" whatever the server location
-    hostname: Meteor.bindEnvironment () -> 
+    hostname: Meteor.bindEnvironment () ->
       Meteor.absoluteUrl().replace(/^http:\/\/|^https:\/\//, '').replace(/\/$/, '')
   settings:
     autoInit: true
@@ -42,6 +42,9 @@ ShareIt =
       instagram:
         'description': ''
         'buttonText': 'Share on Instagram'
+      linkedin:
+        'description': ''
+        'buttonText': 'Share on LinkedIn'
     siteOrder: []
     classes: 'large btn'
     iconOnly: false
@@ -64,17 +67,18 @@ ShareIt =
       googleplus: ShareIt.settings.sites.googleplus.buttonText
       pinterest: ShareIt.settings.sites.pinterest.buttonText
       instagram: ShareIt.settings.sites.instagram.buttonText
+      linkedin: ShareIt.settings.sites.instagram.buttonText
 
   init: (params) ->
     @configure params if params?
 
-    # Twitter    
+    # Twitter
     script_loader '//platform.twitter.com/widgets.js', 'twitter-wjs'
 
     # Facebook
     if @settings.autoInit and @settings.sites.facebook?
       window.fbAsyncInit = =>
         FB.init @settings.sites.facebook
-          
-    $('<div id="fb-root"></div>').appendTo 'body' unless $('#fb-root').get(0)?  
+
+    $('<div id="fb-root"></div>').appendTo 'body' unless $('#fb-root').get(0)?
     script_loader '//connect.facebook.net/en_US/sdk.js', 'facebook-jssdk'
