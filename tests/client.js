@@ -1,16 +1,16 @@
 dataContext = {title: 'Test title', author: 'My Uncle', thumbnail: 'TestPath'};
 
 
-Tinytest.add("ShareIt - {{> shareit}} template renders", function(test) {
-  div = renderToDiv(Template.test_helper_shareit)
+Tinytest.add("Share8 - {{> share8}} template renders", function(test) {
+  div = renderToDiv(Template.test_helper_share8)
   html = canonicalizeHtml(div.innerHTML)
   test.include(html, "Share on Facebook")
   test.include(html, "Share on Twitter")
 });
 
-Tinytest.add("ShareIt - {{> shareit}} template doesn't throw an exception from the rendered function", function(test) {
+Tinytest.add("Share8 - {{> share8}} template doesn't throw an exception from the rendered function", function(test) {
   try {
-    Template.shareit_facebook.rendered()
+    Template.share8_facebook.rendered()
   } catch (e) {
     console.log(e)
     test.fail(e)
@@ -18,9 +18,9 @@ Tinytest.add("ShareIt - {{> shareit}} template doesn't throw an exception from t
 });
 
 
-Tinytest.addAsync("ShareIt - {{> shareit}} template renders valid share links", function(test, done) {
-  ShareIt.settings.sites.facebook = {}
-  div = renderToDiv(Template.test_helper_shareit, dataContext)
+Tinytest.addAsync("Share8 - {{> share8}} template renders valid share links", function(test, done) {
+  Share8.settings.sites.facebook = {}
+  div = renderToDiv(Template.test_helper_share8, dataContext)
   // This feels like a punt, should investigate more
   Meteor.setTimeout(function() {
     html = div.innerHTML

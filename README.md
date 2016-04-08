@@ -1,6 +1,6 @@
 # Share It
 
-This package is based on packages [joshowens:shareit](https://atmospherejs.com/joshowens/shareit) and [lovetostrike:shareit](https://atmospherejs.com/lovetostrike/shareit). It containes some bugfixes for Facebook and Twitter.
+This package is based on packages [joshowens:share8](https://atmospherejs.com/joshowens/share8) and [lovetostrike:share8](https://atmospherejs.com/lovetostrike/share8). It containes some bugfixes for Facebook and Twitter.
 
 The package is compatible with Meteor 1.2.
 
@@ -8,7 +8,7 @@ After installation you have to add initialization code. For example, in the dire
 
 ```javascript
 if (Meteor.isClient) {
-  ShareIt.init({
+  Share8.init({
     siteOrder: ['facebook', 'twitter'],
     sites: {
       'facebook': {
@@ -27,7 +27,7 @@ Now you can customize button text for each social network. Thank you, @briansayl
 
 ```javascript
 if (Meteor.isClient) {
-  ShareIt.init({
+  Share8.init({
     siteOrder: ['facebook', 'twitter'],
     sites: {
       'facebook': {
@@ -52,11 +52,11 @@ I've built social sharing buttons a few times and decided it was time to extract
 
 ## Quick Start
 
-    meteor add liberation:shareit
+    meteor add liberation:share8
 
 ## Usage
 
-Simply put `{{>shareit}}` in your template.  We use the following keys in your
+Simply put `{{>share8}}` in your template.  We use the following keys in your
 **current data context** (more on this below):
 
 * `title`
@@ -90,7 +90,7 @@ enough to get everything it needs from the other tags.
 
 ### Regarding the Data Context
 
-`{{> shareit}}` will work anywhere in a template where `{{title}}`, `{{excerpt}}`,
+`{{> share8}}` will work anywhere in a template where `{{title}}`, `{{excerpt}}`,
 etc would work.  The source of the data context would be the `data()` function
 for a route in `iron:router`, or from a surrounding `{{#with}}` tag.  (You can
 use `{{#each}}` too, but only the last rendered block will be used to set the
@@ -99,19 +99,19 @@ page meta tags:
 ```handlebars
 <template name="article">
   <h1>{{title}}</h1>
-  {{> shareit}}
+  {{> share8}}
 </template>
 ```
 
 Just like any Meteor template/component, you can override the data context
 for a single component by specifying a single non-key argument.  e.g.
-`{{> shareit shareData}}` will get `title` from `{{shareData.title}}`, etc.
+`{{> share8 shareData}}` will get `title` from `{{shareData.title}}`, etc.
 shareData can itself be a key in the current data context, or a helper
 function of the current template, e.g.:
 
 ```handlebars
 <template name="article">
-  {{shareit shareData}}
+  {{share8 shareData}}
 </template>
 ```
 ```js
@@ -138,10 +138,10 @@ Template.article.helpers({
 
 ## Configuration
 
-Somewhere in your client (not server) code you can configure ShareIt.  This is completely optional and the defaults are listed below:
+Somewhere in your client (not server) code you can configure Share8.  This is completely optional and the defaults are listed below:
 
 ```js
-  ShareIt.configure({
+  Share8.configure({
     sites: {                // nested object for extra configurations
         'facebook': {
             'appId': null	// use sharer.php when it's null, otherwise use share dialog
@@ -163,7 +163,7 @@ Somewhere in your client (not server) code you can configure ShareIt.  This is c
 If you have valid facebook app id, we recommend you configure it to use Facebook Share Dialog. If no app id is provided, it would use deprecated sharer.php. Example facebook configuration:
 
 ```js
-    ShareIt.configure({
+    Share8.configure({
         sites: {
             'facebook': {
                 'appId': YOUR_APP_ID
