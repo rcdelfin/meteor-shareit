@@ -1,10 +1,10 @@
-Template.shareit_facebook.onRendered ->
+Template.share8_facebook.onRendered ->
   return unless @data
 
   attach_share_handler = _.once (handler) ->
     Template.instance().$('.fb-share').click handler if _.isFunction handler
 
-  @autorun ->    
+  @autorun ->
     data = Template.currentData()
     $('meta[property^="og:"]').remove()
 
@@ -12,10 +12,11 @@ Template.shareit_facebook.onRendered ->
     # OpenGraph tags
     #
     $('<meta>', { property: 'og:type', content: 'article' }).appendTo 'head'
-    $('<meta>', { property: 'og:site_name', content: ShareIt.location.hostname() }).appendTo 'head'
+    $('<meta>', { property: 'og:site_name', content: Share8.location.hostname() }).appendTo 'head'
 
     url = data.facebook?.url || data.url
-    url = if _.isString(url) and url.length then url else ShareIt.location.href()
+    url = if _.isString(url) and url.length then url else Share8.location.href()
+    url += '?_escaped_fragment_'
     $('<meta>', { property: 'og:url', content: url }).appendTo 'head'
 
     title = data.facebook?.title || data.title
@@ -46,13 +47,13 @@ Template.shareit_facebook.onRendered ->
       img = if _.isFunction data.thumbnail then data.thumbnail() else data.thumbnail
 
       if _.isString(img) and img.length
-        img = ShareIt.location.origin() + img unless /^http(s?):\/\/+/.test(img)
+        img = Share8.location.origin() + img unless /^http(s?):\/\/+/.test(img)
         $('<meta>', { property: 'og:image', content: img }).appendTo 'head'
       else
         img = ''
 
-    if ShareIt.settings.sites.facebook.appId?
-      $('<meta>', { property: 'fb:app_id', content: ShareIt.settings.sites.facebook.appId }).appendTo 'head'
+    if Share8.settings.sites.facebook.appId?
+      $('<meta>', { property: 'fb:app_id', content: Share8.settings.sites.facebook.appId }).appendTo 'head'
 
       attach_share_handler (evt) ->
         evt.preventDefault()
@@ -63,4 +64,4 @@ Template.shareit_facebook.onRendered ->
 
       Template.instance().$(".fb-share").attr "href", href
 
-Template.shareit_facebook.helpers ShareIt.helpers
+Template.share8_facebook.helpers Share8.helpers

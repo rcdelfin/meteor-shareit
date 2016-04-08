@@ -1,11 +1,11 @@
-Template.shareit_pinterest.onRendered ->
+Template.share8_pinterest.onRendered ->
   return unless @data
 
   @autorun ->
     template = Template.instance()
     data = Template.currentData()
 
-    preferred_url = data.url || ShareIt.location.origin() + ShareIt.location.pathname()
+    preferred_url = data.url || Share8.location.origin() + Share8.location.pathname()
     url = encodeURIComponent preferred_url
     description = encodeURIComponent data.pinterest?.description || data.description
 
@@ -13,9 +13,9 @@ Template.shareit_pinterest.onRendered ->
 
     template.$('.pinterest-share').attr 'href', href
 
-Template.shareit_pinterest.events
+Template.share8_pinterest.events
   'click a': (event, template) ->
     event.preventDefault()
     window.open $(template.find('.pinterest-share')).attr('href'), 'pinterest_window', 'width=750, height=650'
 
-Template.shareit_pinterest.helpers(ShareIt.helpers)
+Template.share8_pinterest.helpers(Share8.helpers)

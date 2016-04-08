@@ -1,4 +1,4 @@
-Template.shareit_twitter.onRendered ->
+Template.share8_twitter.onRendered ->
   return unless @data
 
   @autorun ->
@@ -13,7 +13,9 @@ Template.shareit_twitter.onRendered ->
     #$('<meta>', { property: 'twitter:site', content: '' }).appendTo 'head'
 
     url = data.twitter?.url || data.url
-    url = if _.isString(url) and url.length then url else ShareIt.location.origin() + ShareIt.location.pathname()
+    url = if _.isString(url) and url.length then url else Share8.location.origin() + Share8.location.pathname()
+    urlOrig = url
+    url += '?_escaped_fragment_'
     $('<meta>', { property: 'twitter:url', content: url }).appendTo 'head'
 
     author = data.twitter?.author || data.author
@@ -21,7 +23,7 @@ Template.shareit_twitter.onRendered ->
       $('<meta>', { property: 'twitter:creator', content: author }).appendTo 'head'
     else
       author = ''
-      
+
     title = data.twitter?.title || data.title
     if _.isString(title) and title.length
       $('<meta>', { property: 'twitter:title', content: title }).appendTo 'head'
@@ -35,9 +37,9 @@ Template.shareit_twitter.onRendered ->
       description = ''
 
     if data.thumbnail?
-      img = if _.isFunction data.thumbnail then data.thumbnail() else data.thumbnail  
+      img = if _.isFunction data.thumbnail then data.thumbnail() else data.thumbnail
       if _.isString(img) and img.length
-        img = ShareIt.location.origin() + img unless /^http(s?):\/\/+/.test(img)          
+        img = Share8.location.origin() + img unless /^http(s?):\/\/+/.test(img)
         $('<meta>', { property: 'twitter:image', content: img }).appendTo 'head'
       else
         img = ''
@@ -45,12 +47,12 @@ Template.shareit_twitter.onRendered ->
     #
     # Twitter share button
     #
-    href = "https://twitter.com/intent/tweet?url=#{encodeURIComponent url}&text=#{encodeURIComponent title}"
+    href = "https://twitter.com/intent/tweet?url=#{encodeURIComponent urlOrig}&text=#{encodeURIComponent title}"
 
     hashtags = data.twitter?.hashtags || data.hashtags
     href += "&hashtags=#{encodeURIComponent hashtags}" if _.isString(hashtags) and hashtags.length
     href += "&via=#{encodeURIComponent author}" if author
-      
+
     Template.instance().$(".tw-share").attr "href", href
 
-Template.shareit_twitter.helpers ShareIt.helpers
+Template.share8_twitter.helpers Share8.helpers

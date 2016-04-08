@@ -1,3 +1,3 @@
-Template.shareit.helpers
+Template.share8.helpers
   siteTemplates: ->
-    ("shareit_#{site}" for site in ShareIt.settings.siteOrder when ShareIt.settings.sites[site]?)
+    ("share8_#{site}" for site in Share8.settings.siteOrder when Share8.settings.sites[site]?)

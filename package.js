@@ -1,8 +1,8 @@
 Package.describe({
-  summary: 'A meteor package that makes social sharing easy',
+  summary: 'A meteor package that makes social sharing easy; renamed to share8 and add share to LinkedIn',
   git: 'https://github.com/rcdelfin/meteor-shareit.git',
   version: '1.1.1',
-  name: "rcdelfin:shareit"
+  name: "rcdelfin:share8"
 });
 
 Package.onUse(function(api) {
@@ -27,7 +27,7 @@ Package.onUse(function(api) {
     'client/views/linkedin/linkedin.coffee'
   ], 'client');
 
-  api.export('ShareIt', 'client');
+  api.export('Share8', 'client');
 });
 
 // Package.onTest(function (api) {
@@ -36,7 +36,7 @@ Package.onUse(function(api) {
 //     'templating',
 //     'coffeescript'
 //     ])
-//     api.use('joshowens:shareit')
+//     api.use('joshowens:share8')
 
 //   api.addFiles([
 //     'tests/client.html',

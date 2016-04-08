@@ -1,11 +1,11 @@
-Template.shareit_linkedin.onRendered ->
+Template.share8_linkedin.onRendered ->
   return unless @data
 
   @autorun ->
     template = Template.instance()
     data = Template.currentData()
 
-    preferred_url = data.url || ShareIt.location.origin() + ShareIt.location.pathname()
+    preferred_url = data.url || Share8.location.origin() + Share8.location.pathname()
     url = encodeURIComponent preferred_url
     title = data.title
     description = encodeURIComponent data.linkedin?.description || data.description
@@ -14,9 +14,9 @@ Template.shareit_linkedin.onRendered ->
 
     template.$('.linkedin-share').attr 'href', href
 
-Template.shareit_linkedin.events
+Template.share8_linkedin.events
   'click a': (event, template) ->
     event.preventDefault()
     window.open $(template.find('.linkedin-share')).attr('href'), 'linkedin_window', 'width=750, height=650'
 
-Template.shareit_linkedin.helpers(ShareIt.helpers)
+Template.share8_linkedin.helpers(Share8.helpers)
