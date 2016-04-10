@@ -1,5 +1,5 @@
 Package.describe({
-  summary: 'A meteor package that makes social sharing easy; renamed to share8 and add share to LinkedIn',
+  summary: 'A meteor package that makes social sharing easy',
   git: 'https://github.com/rcdelfin/meteor-shareit.git',
   version: '1.1.1',
   name: "rcdelfin:share8"
